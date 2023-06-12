@@ -118,11 +118,11 @@
 
     <div class="card mb-3">
     <div class="card-header">
-        <h3 class="card-title">{{ $task->name }}</h3>
+        {{-- <h3 class="card-title">{{ $task->name }}</h3> --}}
     </div>
     <div class="card-body">
-        <p class="card-text">Total Time: {{ $task->total_time }} minutes</p>
-        <form method="POST" action="{{ route('actions.store', $task) }}">
+        {{-- <p class="card-text">Total Time: {{ $task->total_time }} minutes</p> --}}
+        {{-- <form method="POST" action="{{ route('actions.store', $task) }}"> --}}
             @csrf
             <div class="form-group">
                 <label for="type">Type</label>
@@ -157,82 +157,5 @@
 
 
 
-<h1>Tasks</h1>
-
-<form>
-<div>
-    <label>Title</label>
-    <input type="text" name="title">
-</div>
-<div>
-    <label>Description</label>
-    <textarea name="description"></textarea>
-</div>
-<div>
-    <label>Frequency</label>
-    <select name="frequency">
-        <option value="daily">Daily</option>
-        <option value="weekly">Weekly</option>
-        <option value="monthly">Monthly</option>
-    </select>
-</div>
-<div>
-    <label>Time</label>
-    <input type="text" name="time" readonly>
-</div>
-<button type="button" id="add-action">Add Action</button>
-</form>
-
-<div id="actions">
-{{-- @foreach ($task->actions as $action) --}}
-    <div>
-        <select name="type">
-            <option value="reading">Reading</option>
-            <option value="action">Action</option>
-        </select>
-        <input type="text" name="reading" style="display: none;">
-        <div style="display: none;">
-            <label><input type="radio" name="result" value="passed">Passed</label>
-            <label><input type="radio" name="result" value="failed">Failed</label>
-        </div>
-        <input type="text" name="time" readonly>
-    </div>
-{{-- @endforeach --}}
-</div>
-
-
     </body>
-
-
-<script>
-    let time = 0;
-
-    $('#add-action').on('click', () => {
-      $('#actions').append(
-        <div>
-            <select name="type">
-                <option value="reading">Reading</option>
-                <option value="action">Action</option>
-            </select>
-            <input type="text" name="reading" style="display: none;">
-            <div style="display: none;">
-                <label><input type="radio" name="result" value="passed">Passed</label>
-                <label><input type="radio" name="result" value="failed">Failed</label>
-            </div>
-            <input type="text" name="time" value="${time}" readonly>
-        </div>
-      );
-      time += 5; // Add 5 minutes
-    });
-
-    $('#actions').on('change', 'select[name="type"]', (e) => {
-      if ($(e.target).val() === 'reading') {
-        $(e.target).next('input').show();
-        $(e.target).next().next('div').hide();
-      } else {
-        $(e.target).next('input').hide();
-        $(e.target).next().next('div').show();
-      }
-    });
-    </script>
     </html>
