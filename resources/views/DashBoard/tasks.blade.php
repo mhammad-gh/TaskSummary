@@ -157,6 +157,50 @@
 
 
 
+<h1>Tasks</h1>
+
+<form>
+<div>
+    <label>Title</label>
+    <input type="text" name="title">
+</div>
+<div>
+    <label>Description</label>
+    <textarea name="description"></textarea>
+</div>
+<div>
+    <label>Frequency</label>
+    <select name="frequency">
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Monthly</option>
+    </select>
+</div>
+<div>
+    <label>Time</label>
+    <input type="text" name="time" readonly>
+</div>
+<button type="button" id="add-action">Add Action</button>
+</form>
+
+<div id="actions">
+{{-- @foreach ($task->actions as $action) --}}
+    <div>
+        <select name="type">
+            <option value="reading">Reading</option>
+            <option value="action">Action</option>
+        </select>
+        <input type="text" name="reading" style="display: none;">
+        <div style="display: none;">
+            <label><input type="radio" name="result" value="passed">Passed</label>
+            <label><input type="radio" name="result" value="failed">Failed</label>
+        </div>
+        <input type="text" name="time" readonly>
+    </div>
+{{-- @endforeach --}}
+</div>
+
+
     </body>
 
 
